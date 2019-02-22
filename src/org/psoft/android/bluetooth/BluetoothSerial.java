@@ -293,6 +293,10 @@ public class BluetoothSerial {
 							bufferSize += newBytes;
 
 						Log.d(BMX_BLUETOOTH, "read " + newBytes);
+						
+						messageHandler.read(bufferSize, buffer);
+                        			buffer = new byte[MAX_BYTES];
+                        			bufferSize = 0;
 					}
 					
 					if (bufferSize > 0) {	
@@ -309,7 +313,7 @@ public class BluetoothSerial {
 					} else {
 						
 						try {
-							Thread.sleep(10);
+							Thread.sleep(300);
 						} catch (InterruptedException ie) {
 							break;
 						}
